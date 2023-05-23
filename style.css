@@ -23,7 +23,7 @@ body {
    margin: 20px 40px;
    justify-content: center;
    background-color: lightgrey;
-   border-radius: 0 0 50px 50px;
+
 
 }
 
@@ -58,6 +58,9 @@ body {
   color: #999;
 }
 
+.star {
+    display: None;
+    }
 
 .movie-poster {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);

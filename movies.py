@@ -1,18 +1,12 @@
 
 import movie_storage
 
-menu = """Menu:
-0. Exit
-1. List movies
-2. Add movie
-3. Delete movie
-4. Update movie
-5. Stats
-6. Random movie
-7. Search movie
-8. Movies sorted by rating
-9. Generate website
-10. Favorite movie
+menu = """_____MENU_____________________________________________________________________
+0. Exit                 1. List movies          2. Add movie
+3. Delete movie         4. Update movie         5. Stats
+6. Random movie         7. Search movie         8. Movies sorted by rating
+9. Generate website     10. Favorite movie      11. Movie histogram
+______________________________________________________________________________
 """
 
 def my_choice(word):
@@ -38,26 +32,34 @@ def my_choice(word):
     elif word == 10:
         movie_storage.favorite_movies()
         print('Enjoy index.html! Thank you')
+    elif word == 11:
+        movie_storage.movies_histogram()
     else:
         print("Over limited")
 
 
 def main():
     print(menu)
-    choice = int(input("Enter choice (0-10):"))
-    if choice == 0:
-        print("Bye!")
-    else:
-
-        while choice and (choice < 11):
-            my_choice(choice)
-
+    while True:
+        choice = input("Enter choice (0-11): ")
+        if choice == '0':
+            print("Bye!")
             break
-        button = input('Continue <Y/N>? : ')
-        if button.upper() == "Y":
-            main()
-        else:
+
+        try:
+            choice = int(choice)
+            if 0 < choice < 12:
+                my_choice(choice)
+            else:
+                print("Invalid choice. Please enter a number between 0 and 11.")
+        except ValueError:
+            print("Invalid choice. Please enter a number between 0 and 11.")
+
+        button = input('Continue (Y/N)? : ')
+        if button.upper() != "Y":
             print("Thank you!")
+            break
+
 
 
 if __name__ == "__main__":
